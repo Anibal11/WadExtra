@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Administrador</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Bienvenido
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Pronto nuevas actualizaciones
+                    <h:form>
+                        <h:commandButton value="Cerrar Sesion" action="#{cerrarSessionBean.cerrarSession()}"/>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Menu" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Usuarios">
+                            <p:menuitem value="Agregar Usuarios" outcome="agregarUsuario"/>
+                            <p:menuitem value="Eliminar Usuarios" outcome="eliminarUsuario" />
+                            <p:menuitem value="Cambiar contraseña a usuario" outcome="cambiarContrasenaUsuario" />
+                        </p:submenu>
+                        <p:submenu label="Grupo">
+                            <p:menuitem value="Agregar Grupo" outcome="agregarGrupo" />
+                            <p:menuitem value="Editar Grupo" outcome="editarGrupo" />
+                            <p:menuitem value="Eliminar Grupo" outcome="eliminarGrupo" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <p:dataTable value="#{listarUsuariosBean.usuarios}" var="usuario">
+                            <p:column headerText="Id Usuario:">
+                                <h:outputText value = "#{usuario.idUsuario}" />
+                            </p:column>
+                            <p:column headerText="Nombre:">
+                                <h:outputText value = "#{usuario.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Primer Apellido:">
+                                <h:outputText value = "#{usuario.primerApellido}"/>
+                            </p:column>   
+                            <p:column headerText="Segundo Apellido:">
+                                <h:outputText value = "#{usuario.segundoApellido}"/>
+                            </p:column>
+                            <p:column headerText="Nombre de Usuario:">
+                                <h:outputText value = "#{usuario.username}"/>
+                            </p:column>
+                            <p:column headerText="Contraseña:">
+                                <h:outputText value = "#{usuario.password}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+<!--
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>  
+    <h:body>
+       Bienvenido, lo has hecho bien daniel :D
+       <h:form>
+           <h:link outcome="agregarUsuario" value="Agregar Usuarios" /><br/>
+           <h:commandButton value="Cerrar Sesion" action="#{cerrarSessionBean.cerrarSession()}"/>
+       </h:form>
+    </h:body>
+</html>
+-->
+
+
